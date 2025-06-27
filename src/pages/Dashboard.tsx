@@ -66,7 +66,7 @@ const Dashboard = () => {
         </div>
 
         {/* Manual Type Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {manualTypes.map((manual, index) => (
             <Card 
               key={index}
@@ -86,24 +86,6 @@ const Dashboard = () => {
               </CardHeader>
             </Card>
           ))}
-        </div>
-
-        {/* System Info */}
-        <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <span className="font-medium text-slate-600">System Status:</span>
-              <span className="ml-2 text-green-600">Offline Ready</span>
-            </div>
-            <div>
-              <span className="font-medium text-slate-600">Network:</span>
-              <span className="ml-2 text-blue-600">Intranet (LAN)</span>
-            </div>
-            <div>
-              <span className="font-medium text-slate-600">Version:</span>
-              <span className="ml-2 text-slate-800">IETM v2.0.1</span>
-            </div>
-          </div>
         </div>
       </main>
     </div>
