@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, Search, Bookmark, LogOut, FileText, Settings } from 'lucide-react';
+import { BookOpen, LogOut, FileText } from 'lucide-react';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -15,34 +15,20 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-  const navigationCards = [
+  const manualTypes = [
     {
       title: 'User Handbook',
       description: 'Operation and maintenance manual for radar systems',
       icon: BookOpen,
-      onClick: () => navigate('/manual?type=user'),
+      onClick: () => navigate('/manual-dashboard?type=user'),
       color: 'bg-blue-50 border-blue-200 hover:bg-blue-100'
     },
     {
       title: 'Technical Manual',
       description: 'Detailed technical specifications and repair procedures',
       icon: FileText,
-      onClick: () => navigate('/manual?type=technical'),
+      onClick: () => navigate('/manual-dashboard?type=technical'),
       color: 'bg-green-50 border-green-200 hover:bg-green-100'
-    },
-    {
-      title: 'Search Manual',
-      description: 'Find specific content across all manual sections',
-      icon: Search,
-      onClick: () => navigate('/search'),
-      color: 'bg-purple-50 border-purple-200 hover:bg-purple-100'
-    },
-    {
-      title: 'My Bookmarks',
-      description: 'Quick access to your saved manual sections',
-      icon: Bookmark,
-      onClick: () => navigate('/bookmarks'),
-      color: 'bg-amber-50 border-amber-200 hover:bg-amber-100'
     }
   ];
 
@@ -73,45 +59,37 @@ const Dashboard = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">Manual Access Dashboard</h2>
-          <p className="text-slate-600">Select a manual or tool to get started</p>
+      <main className="max-w-4xl mx-auto px-6 py-8">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold text-slate-800 mb-2">Select Manual Type</h2>
+          <p className="text-slate-600">Choose the type of manual you want to access</p>
         </div>
 
-        {/* Navigation Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {navigationCards.map((card, index) => (
+        {/* Manual Type Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          {manualTypes.map((manual, index) => (
             <Card 
               key={index}
-              className={`cursor-pointer transition-all duration-200 transform hover:scale-105 ${card.color}`}
-              onClick={card.onClick}
+              className={`cursor-pointer transition-all duration-200 transform hover:scale-105 ${manual.color}`}
+              onClick={manual.onClick}
             >
-              <CardHeader className="pb-3">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-white rounded-lg shadow-sm">
-                    <card.icon className="h-6 w-6 text-slate-600" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg text-slate-800">{card.title}</CardTitle>
+              <CardHeader className="pb-4 text-center">
+                <div className="flex justify-center mb-4">
+                  <div className="p-4 bg-white rounded-full shadow-sm">
+                    <manual.icon className="h-12 w-12 text-slate-600" />
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-slate-600">
-                  {card.description}
+                <CardTitle className="text-2xl text-slate-800">{manual.title}</CardTitle>
+                <CardDescription className="text-slate-600 text-base">
+                  {manual.description}
                 </CardDescription>
-              </CardContent>
+              </CardHeader>
             </Card>
           ))}
         </div>
 
         {/* System Info */}
-        <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center">
-            <Settings className="h-5 w-5 mr-2" />
-            System Information
-          </h3>
+        <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div>
               <span className="font-medium text-slate-600">System Status:</span>

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ManualDashboard from "./pages/ManualDashboard";
 import ManualViewer from "./pages/ManualViewer";
 import Search from "./pages/Search";
 import Bookmarks from "./pages/Bookmarks";
@@ -31,6 +32,11 @@ const App = () => (
             <Route path="/" element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/manual-dashboard" element={
+              <ProtectedRoute>
+                <ManualDashboard />
               </ProtectedRoute>
             } />
             <Route path="/manual" element={
