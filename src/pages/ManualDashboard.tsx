@@ -98,7 +98,7 @@ const ManualDashboard = () => {
         </div>
 
         {/* Navigation Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {navigationCards.map((card, index) => (
             <Card 
               key={index}
@@ -122,29 +122,6 @@ const ManualDashboard = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Manual Info */}
-        <div className="bg-white rounded-lg shadow-sm border p-6">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-slate-800 mb-4">
-              {manualTitle} Information
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <span className="font-medium text-slate-600">Manual Type:</span>
-                <span className="ml-2 text-slate-800">{manualTitle}</span>
-              </div>
-              <div>
-                <span className="font-medium text-slate-600">Status:</span>
-                <span className="ml-2 text-green-600">Available Offline</span>
-              </div>
-              <div>
-                <span className="font-medium text-slate-600">Last Updated:</span>
-                <span className="ml-2 text-slate-800">Dec 2024</span>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
     </div>
